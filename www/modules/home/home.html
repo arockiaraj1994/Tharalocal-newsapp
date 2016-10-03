@@ -1,5 +1,11 @@
 <div class="form-group" ng-init = "getNews()">
-    <input type="text" class="form-control" placeholder="Enter Location" ng-model="currentlocation" />
+          <input vs-google-autocomplete
+                 ng-model="address"
+                 type="text" 
+                 name="address"
+                 id="address"
+                 class="form-control" 
+                 placeholder="Enter address">
 </div>
 
 <div class="form-group col-sm-12 col-xs-12" style="padding: 0;" ng-repeat="post in news" >
