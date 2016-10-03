@@ -58,6 +58,7 @@ TharaLocal.controller("HomeController", ['$scope','$http','$location','$state','
             url: base_url + '/getNews/' + $stateParams.postId,
             methd: 'GET',
         }).then(function successCallback(response){
+            $scope.feed = response.data;
             
         }, function erroCallback(result) {
             

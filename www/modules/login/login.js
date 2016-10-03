@@ -21,11 +21,14 @@ TharaLocal.controller("LoginController", ['$scope','$location','$http','$rootSco
             if(response.data !='') {
                 $location.path('/home') 
                 $rootScope.userId = response.data;
+                $scope.errorMessage = ''
+            } else {
+                $scope.errorMessage = "Username or password is incorrect"
             }
             
                 
         }, function errorCallback(response) {
-            
+            $scope.errorMessage = "Username or password is incorrect"
         });
         
     }
