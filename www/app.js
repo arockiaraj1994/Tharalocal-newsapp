@@ -22,7 +22,7 @@ TharaLocal.config(function($urlRouterProvider, $locationProvider, $stateProvider
     })
     
     $stateProvider.state('viewPosts', {
-        url:'/news',
+        url:'/news/:postId',
         templateurl: 'modules/home/news-view.html',
         controller: 'HomeController'
     })

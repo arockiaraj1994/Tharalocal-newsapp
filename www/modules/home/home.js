@@ -17,16 +17,16 @@ TharaLocal.controller("HomeController", ['$scope','$http', function($scope, $htt
         }
    ]
     
-    $scope.getNews = function() {
-        $http({
-            url: base_url + '/login',
-            method: 'GET'
-        }).then(function successCallback(response) {
-            
-        }, function errorCallback(response) {
-            
-        });
-    }
+//    $scope.getNews = function() {
+//        $http({
+//            url: base_url + '/login',
+//            method: 'GET'
+//        }).then(function successCallback(response) {
+//            
+//        }, function errorCallback(response) {
+//            
+//        });
+//    }
     
     $scope.showCurrenLocationInMap = function(lat, la) {
         var mymap = L.map('map').setView([12.8246045, 80.047388], 13);
