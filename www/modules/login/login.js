@@ -1,5 +1,7 @@
 TharaLocal.controller("LoginController", ['$scope','$location','$http', function($scope, $location, $http) {
     
+    var base_url = "http://10.4.59.85:8080/TharaLocalAPI";
+    
     $scope.user = {
         username: '',
         password: '',
@@ -11,16 +13,22 @@ TharaLocal.controller("LoginController", ['$scope','$location','$http', function
     }
     
     $scope.signUp = function() {
-        $location.path('/login')
-//        $http({
-//            url: '',
-//            method:'POST',
-//            
-//        }).then(function successCallback(response) {
-//            
-//        }, function errorCallback(response) {
-//            
-//        });
+        
+        $http({
+            url: base_url + '/signup',
+            method:'POST',
+            data: 
+                {
+                    username: $scope.user.username,
+                    password: $scope.user.password
+                }
+            
+            
+        }).then(function successCallback(response) {
+                $location.path('/login');    
+        }, function errorCallback(response) {
+            
+        });
     }
     
 }])

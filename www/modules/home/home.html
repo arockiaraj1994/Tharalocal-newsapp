@@ -1,5 +1,5 @@
 <div class="form-group" ng-init = "getNews();showCurrenLocationInMap()">
-    <div></div>
+    <input type="text" class="form-control" placeholder="Enter location" />
 </div>
 
 <div class="col-sm-12 col-xs-12" style="padding:0;height: 100px;margin-bottom: 4%" id="map"></div>
@@ -7,7 +7,7 @@
 <div class="form-group col-sm-12 col-xs-12" style="border-bottom: 1px solid rgb(222, 222, 222);
                                                    padding: 0px 0px 2%;" ng-repeat="post in news" >
     <div class="col-xs-2 col-sm-2" style="padding: 0;">
-        <img src=""  />
+        <img src="modules/images/news-icon1.png" style="width:80%"  />
     </div>
     <div class="col-xs-10 col-sm-10" style="padding: 0;">
         <a href="" > {{post.header}}</a>

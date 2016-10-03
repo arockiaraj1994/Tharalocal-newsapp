@@ -1,5 +1,7 @@
 TharaLocal.controller("HomeController", ['$scope','$http', function($scope, $http) {
     
+    var base_url = "http://10.4.59.68:8080/TharaLocalAPI";
+    
     $scope.news = [
         {
             header: 'This thara local app',
@@ -17,7 +19,7 @@ TharaLocal.controller("HomeController", ['$scope','$http', function($scope, $htt
     
     $scope.getNews = function() {
         $http({
-            url: 'http://10.4.59.68:8080/TharaLocalAPI/login',
+            url: base_url + '/login',
             method: 'GET'
         }).then(function successCallback(response) {
             

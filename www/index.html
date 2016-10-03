@@ -45,6 +45,24 @@
 
 <body ng-app = "TharaLocal">
     <div id="wrapper" ng-controller = "LoginController">
+        <nav class="navbar navbar-default" style="background-color: #0f75bc">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="background-color: #ddd">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#" style="color:#fff">Local Times</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/home">Home <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Post Feeds</a></li>
+        </ul>
+          </div></div>
+</nav>
         <div id = "page-wrapper">
             <div class ="container-fluid">
                 <div ui-view></div>
