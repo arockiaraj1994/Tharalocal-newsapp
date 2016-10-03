@@ -19,6 +19,10 @@ TharaLocal.controller("HomeController", ['$scope','$http', function($scope, $htt
         $http({
             url: 'http://10.4.59.68:8080/TharaLocalAPI/login',
             method: 'GET'
+        }).then(function successCallback(response) {
+            
+        }, function errorCallback(response) {
+            
         });
     }
 
