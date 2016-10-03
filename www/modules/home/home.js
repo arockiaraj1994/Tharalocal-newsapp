@@ -13,5 +13,13 @@ TharaLocal.controller("HomeController", ['$scope','$http', function($scope, $htt
             createdBy : 'siva',
             ts: 'Tue 16:58'
         }
-    ]
+   ]
+    
+    $scope.getNews = function() {
+        $http({
+            url: 'http://10.4.59.68:8080/TharaLocalAPI/login',
+            method: 'GET'
+        });
+    }
+
 }])

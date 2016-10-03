@@ -1,7 +1,11 @@
-var TharaLocal = angular.module('TharaLocal', [""])
+var TharaLocal = angular.module('TharaLocal', ["ui.router"])
 
-TharaLocal.config($urlProvider, $locationProvider, $stateProvider) {
-    $urlProvider.otherWise('/home');
+TharaLocal.config(function($urlRouterProvider, $locationProvider, $stateProvider) {
+    $urlRouterProvider.otherwise('/home');
     
-    $stateProvider.state('/')
-}
+    $stateProvider.state('home', {
+        url: '/home',
+        templateUrl:'modules/home/home.html',
+        controller: 'HomeController'
+    });
+})

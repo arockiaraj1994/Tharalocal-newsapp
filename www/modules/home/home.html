@@ -1,12 +1,12 @@
-<div class="form-group">
+<div class="form-group" ng-init = "getNews()">
     <input type="text" class="form-control" placeholder="Enter Location" ng-model="currentlocation" />
 </div>
 
-<div class="form-group col-sm-12 col-xs-12 clear-padding" ng-repeat="post in news" >
-    <div class="col-xs-3 col-sm-3 clear-padding">
+<div class="form-group col-sm-12 col-xs-12" style="padding: 0;" ng-repeat="post in news" >
+    <div class="col-xs-3 col-sm-3" style="padding: 0;">
         <img src=""  />
     </div>
-    <div class="col-xs-9 col-sm-9 clear-padding">
+    <div class="col-xs-9 col-sm-9" style="padding: 0;">
         <a href="" > {{post.header}}</a>
         <div>
             {{post.content}}
