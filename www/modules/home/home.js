@@ -26,24 +26,21 @@ TharaLocal.controller("HomeController", ['$scope','$http', function($scope, $htt
         });
     }
     
-    $scope.showCurrenLocationInMap = function() {
+    $scope.showCurrenLocationInMap = function(lat, la) {
         var mymap = L.map('map').setView([12.8246045, 80.047388], 13);
 
-	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
-		maxZoom: 18,
-		id: 'mapbox.streets'
-	}).addTo(mymap);
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
+            maxZoom: 18,
+            id: 'mapbox.streets'
+        }).addTo(mymap);
 
-	L.marker([12.8246045, 80.047388]).addTo(mymap)
+        L.marker([12.8246045, 80.047388]).addTo(mymap)
 
-	function onMapClick(e) {
-		popup
-			.setLatLng(e.latlng)
-			.setContent("You clicked the map at " + e.latlng.toString())
-			.openOn(mymap);
-	}
+        function onMapClick(e) {
+            alert(e.latlng.lat);
+        }
 
-	mymap.on('click', onMapClick);
+        mymap.on('click', onMapClick);
 
     }
 
