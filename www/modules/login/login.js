@@ -1,4 +1,4 @@
-TharaLocal.controller("LoginController", ['$scope','$location','$http','$rootScope', function($scope, $location, $http, $rootScope) {
+TharaLocal.controller("LoginController", ['$scope','$location','$http','$rootScope','$stateParams', function($scope, $location, $http, $rootScope, $stateParams) {
     
     var base_url = "http://10.4.59.85:8080/TharaLocalAPI";
     

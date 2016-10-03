@@ -1,6 +1,6 @@
-TharaLocal.controller("HomeController", ['$scope','$http', function($scope, $http) {
+TharaLocal.controller("HomeController", ['$scope','$http','$location','$state','$stateParams', function($scope, $http, $location, $state, $stateParams) {
     
-    var base_url = "http://10.4.59.68:8080/TharaLocalAPI";
+    var base_url = "http://10.4.59.85:8080/TharaLocalAPI";
     
     $scope.news = [
         {
@@ -17,16 +17,21 @@ TharaLocal.controller("HomeController", ['$scope','$http', function($scope, $htt
         }
    ]
     
-//    $scope.getNews = function() {
-//        $http({
-//            url: base_url + '/login',
-//            method: 'GET'
-//        }).then(function successCallback(response) {
-//            
-//        }, function errorCallback(response) {
-//            
-//        });
-//    }
+    $scope.getNews = function() {
+        $http({
+            url: base_url + '/getFeeds',
+            method: 'GET'
+        }).then(function successCallback(response) {
+            $scope.news = response.data;
+        }, function errorCallback(response) {
+            
+        });
+    }
+    
+    $scope.redirectToViewPage = function() {
+        
+        $state.go("viewPosts", { postId: '234243234' })
+    }
     
     $scope.showCurrenLocationInMap = function(lat, la) {
         var mymap = L.map('map').setView([12.8246045, 80.047388], 13);
@@ -45,7 +50,18 @@ TharaLocal.controller("HomeController", ['$scope','$http', function($scope, $htt
         }
 
         mymap.on('click', onMapClick);
-
+    }
+    
+        
+    $scope.getFeed = function() {
+        $http({
+            url: base_url + '/getNews/' + $stateParams.postId,
+            methd: 'GET',
+        }).then(function successCallback(response){
+            
+        }, function erroCallback(result) {
+            
+        })
     }
     
     

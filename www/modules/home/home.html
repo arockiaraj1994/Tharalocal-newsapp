@@ -10,11 +10,12 @@
         <img src="modules/images/news-icon1.png" style="width:80%"  />
     </div>
     <div class="col-xs-10 col-sm-10" style="padding: 0;">
-        <a href="" > {{post.header}}</a>
+        <a href="" > {{post.title}}</a>
         <div>
-            {{post.content}}
+            {{post.news}}
         </div>
     </div>
-    <span style="font-size:10px">{{post.ts}}</span>
-    <span style="float:right;font-size:10px">Posted by {{post.createdBy}}</span>
+    <span style="font-size:10px">{{post.createon}}</span>
+    <span style="float:right;font-size:10px">Posted by {{post.createon}}</span>
 </div>
+<button ng-click = "redirectToViewPage()">sdfsd</button>
