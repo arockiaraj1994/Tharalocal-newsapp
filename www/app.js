@@ -21,9 +21,9 @@ TharaLocal.config(function($urlRouterProvider, $locationProvider, $stateProvider
         controller: 'LoginController'
     })
     
-    stateProvider.state('viewPosts', {
+    $stateProvider.state('viewPosts', {
         url:'/news',
-        templateurl: 'modules/home/news.view.html',
+        templateurl: 'modules/home/news-view.html',
         controller: 'HomeController'
     })
 })
