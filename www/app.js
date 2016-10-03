@@ -1,4 +1,4 @@
-var TharaLocal = angular.module('TharaLocal', ["ui.router"])
+var TharaLocal = angular.module('TharaLocal', ["ui.router","vsGoogleAutocomplete"])
 
 TharaLocal.config(function($urlRouterProvider, $locationProvider, $stateProvider) {
     $urlRouterProvider.otherwise('/login');
