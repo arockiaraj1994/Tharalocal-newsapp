@@ -5,7 +5,7 @@
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
       "src": "jsapp/template-single-view-js/sample.zip",
       "projectGuid": "d89e2dbf-f975-413e-ba27-2b304615577f",
-      "lastModifiedDate": 1475478807982,
+      "lastModifiedDate": 1475499012929,
       "creationDate": 1475317832753
     },
     "sourceDirectory": "www",
