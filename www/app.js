@@ -14,4 +14,16 @@ TharaLocal.config(function($urlRouterProvider, $locationProvider, $stateProvider
         templateUrl:'modules/login/login.html',
         controller: 'LoginController'
     });
+    
+    $stateProvider.state('signup', {
+        url: '/signup',
+        templateUrl: 'modules/login/sign-up.html',
+        controller: 'LoginController'
+    })
+    
+    stateProvider.state('viewPosts', {
+        url:'/news',
+        templateurl: 'modules/home/news.view.html',
+        controller: 'HomeController'
+    })
 })

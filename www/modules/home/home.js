@@ -34,14 +34,18 @@ TharaLocal.controller("HomeController", ['$scope','$http', function($scope, $htt
             id: 'mapbox.streets'
         }).addTo(mymap);
 
-        L.marker([12.8246045, 80.047388]).addTo(mymap)
+        var marker = L.marker([12.8246045, 80.047388]).addTo(mymap);
 
         function onMapClick(e) {
-            alert(e.latlng.lat);
+            mymap.setView(L.latLng(e.latlng.lat, e.latlng.lng));
+            mymap.removeLayer(marker);
+            marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(mymap);
         }
 
         mymap.on('click', onMapClick);
 
     }
+    
+    
 
 }])
