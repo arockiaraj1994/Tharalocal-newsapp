@@ -1,4 +1,4 @@
-TharaLocal.controller("HomeController", ['$scope','$http','$location','$state','$stateParams', function($scope, $http, $location, $state, $stateParams) {
+TharaLocal.controller("HomeController", ['$scope','$http','$location','$state','$stateParams','$rootScope', function($scope, $http, $location, $state, $stateParams, $rootScope) {
     
     var base_url = "http://10.4.59.85:8080/TharaLocalAPI";
     
@@ -28,14 +28,15 @@ TharaLocal.controller("HomeController", ['$scope','$http','$location','$state','
         });
     }
     
-    $scope.redirectToViewPage = function() {
-        
-        $state.go("viewPosts", { postId: '234243234' })
+    $scope.redirectToViewPage = function(id) {
+        console.log(id);
+        $state.go("viewPosts", { postId: id });
     }
     
     $scope.showCurrenLocationInMap = function(lat, la) {
         var mymap = L.map('map').setView([12.8246045, 80.047388], 13);
-
+        $scope.lat = "12.8246045";
+        $scope.lan = "80.047388"
         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
             maxZoom: 18,
             id: 'mapbox.streets'
@@ -47,18 +48,41 @@ TharaLocal.controller("HomeController", ['$scope','$http','$location','$state','
             mymap.setView(L.latLng(e.latlng.lat, e.latlng.lng));
             mymap.removeLayer(marker);
             marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(mymap);
+            $scope.lat = e.latlng.lat;
+            $scope.lan = e.latlng.lng;
         }
 
         mymap.on('click', onMapClick);
     }
     
+    $scope.postFeeds = function() {
+         $http({
+            url: base_url + '/postFeed',
+            method: 'POST',
+            data: {
+                "user": $rootScope.userId,
+                "news": $scope.content,
+                "lat": $scope.lat,
+                "longi":$scope.lan,
+                "area":"Thambaram",
+                "title":$scope.title
+            }
+        }).then(function successCallback(response) {
+             $scope.content = '';
+             $scope.title = '';
+             $location.path('/home')
+        }, function errorCallback(response) {
+            
+        }); 
+    }
+    
         
     $scope.getFeed = function() {
         $http({
-            url: base_url + '/getNews/' + $stateParams.postId,
+            url: base_url + '/getFeeds?messageId=' + $stateParams.postId,
             methd: 'GET',
         }).then(function successCallback(response){
-            $scope.feed = response.data;
+            $scope.post = response.data;
             
         }, function erroCallback(result) {
             

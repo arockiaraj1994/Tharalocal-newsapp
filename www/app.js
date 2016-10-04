@@ -26,4 +26,10 @@ TharaLocal.config(function($urlRouterProvider, $locationProvider, $stateProvider
         templateUrl: 'modules/home/news-view.html',
         controller: 'HomeController'
     })
+    
+    $stateProvider.state('postfeed', {
+        url:'/postfeed',
+        templateUrl: 'modules/home/feed.html',
+        controller: 'HomeController'
+    })
 })
