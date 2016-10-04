@@ -28,6 +28,24 @@ TharaLocal.controller("HomeController", ['$scope','$http','$location','$state','
         });
     }
     
+    $scope.share = function(news){
+        var options = {
+  message: 'Your Friend has shared an information for you!!', 
+  subject: news, 
+  files: ['', ''], 
+  url: '',
+  chooserTitle: '' 
+}
+        window.plugins.socialsharing.shareWithOptions(options, shareSucess, shareError);
+    }
+    
+    var shareSucess = function(position){
+        alert("Done");
+    }
+    var shareError = function(error){
+        alert("Share Failed");
+    }
+    
     $scope.redirectToViewPage = function(id) {
         $state.go("viewPosts", { postId: id });
     }
