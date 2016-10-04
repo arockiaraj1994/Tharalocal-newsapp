@@ -29,7 +29,6 @@ TharaLocal.controller("HomeController", ['$scope','$http','$location','$state','
     }
     
     $scope.redirectToViewPage = function(id) {
-        console.log(id);
         $state.go("viewPosts", { postId: id });
     }
     

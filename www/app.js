@@ -1,7 +1,7 @@
 var TharaLocal = angular.module('TharaLocal', ["ui.router"])
 
 TharaLocal.config(function($urlRouterProvider, $locationProvider, $stateProvider) {
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/home');
     
     $stateProvider.state('home', {
         url: '/home',

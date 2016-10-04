@@ -52,4 +52,16 @@ TharaLocal.controller("LoginController", ['$scope','$location','$http','$rootSco
         });
     }
     
+    $scope.navigateTo = function(path) {
+        console.log($rootScope.userId);
+        console.log(path)
+        if(path == '/postfeed' && !angular.isUndefined($rootScope.userId)) {
+            $location.path(path);
+        } else if(path == '/home') {
+            $location.path('/home')
+        }else {
+            $location.path('/login');
+        }
+    }
+    
 }])
