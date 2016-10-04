@@ -34,22 +34,28 @@ TharaLocal.controller("LoginController", ['$scope','$location','$http','$rootSco
     }
     
     $scope.signUp = function() {
-        $http({
-            url: base_url + '/signup',
-            method:'POST',
-            data: 
-                {
-                    username: $scope.user.username,
-                    password: $scope.user.password
-                }
+        if(angular.isUndefined($scope.user.username) || $scope.user.username== '' || angular.isUndefined($scope.user.password) || $scope.user.password == '') {
+            $scope.errorMessage = 'Invalid input';
+            return;
+        } else {
+                    
+            $http({
+                url: base_url + '/signup',
+                method:'POST',
+                data: 
+                    {
+                        username: $scope.user.username,
+                        password: $scope.user.password
+                    }
+            }).then(function successCallback(response) {
+                    $scope.user = {};
+                    $location.path('/login');    
+            }, function errorCallback(response) {
+
+            });
             
-            
-        }).then(function successCallback(response) {
-                $scope.user = {};
-                $location.path('/login');    
-        }, function errorCallback(response) {
-            
-        });
+        }
+
     }
     
     $scope.navigateTo = function(path) {
