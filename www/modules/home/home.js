@@ -17,9 +17,25 @@ TharaLocal.controller("HomeController", ['$scope','$http','$location','$state','
         }
    ]
     
+    $scope.getinitialdata = function() {
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    }
+    
+    var onSuccess = function(position){
+        $scope.showCurrenLocationInMap(position.coords.latitude, position.coords.longitude);
+        $scope.getNews();
+        alert("suc"+position.coords.latitude)
+;    }
+    var onError = function(error){
+        $scope.showCurrenLocationInMap("12.823920000000001", "80.04514");
+        $scope.getNews();
+        alert("err");
+        
+    }
+    
     $scope.getNews = function() {
-        $scope.lat = "12.823920000000001";
-        $scope.lan = "80.04514"
+       /* $scope.lat = "12.823920000000001";
+        $scope.lan = "80.04514"*/
         $http({
             url: base_url + '/getFeeds?lati=' + $scope.lat + '&longi=' + $scope.lan,
             method: 'GET'
@@ -35,15 +51,15 @@ TharaLocal.controller("HomeController", ['$scope','$http','$location','$state','
     }
     
     $scope.showCurrenLocationInMap = function(lat, la) {
-        var mymap = L.map('map').setView([12.8246045, 80.047388], 13);
-        $scope.lat = "12.8246045";
-        $scope.lan = "80.047388"
+        var mymap = L.map('map').setView([lat, la], 13);
+        $scope.lat = lat;
+        $scope.lan = la;
         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
             maxZoom: 18,
             id: 'mapbox.streets'
         }).addTo(mymap);
 
-        var marker = L.marker([12.8246045, 80.047388]).addTo(mymap);
+        var marker = L.marker([lat, la]).addTo(mymap);
 
         function onMapClick(e) {
             mymap.setView(L.latLng(e.latlng.lat, e.latlng.lng));
@@ -51,6 +67,7 @@ TharaLocal.controller("HomeController", ['$scope','$http','$location','$state','
             marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(mymap);
             $scope.lat = e.latlng.lat;
             $scope.lan = e.latlng.lng;
+            $scope.getNews();
         }
 
         mymap.on('click', onMapClick);
