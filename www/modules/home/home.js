@@ -18,8 +18,10 @@ TharaLocal.controller("HomeController", ['$scope','$http','$location','$state','
    ]
     
     $scope.getNews = function() {
+        $scope.lat = "12.823920000000001";
+        $scope.lan = "80.04514"
         $http({
-            url: base_url + '/getFeeds',
+            url: base_url + '/getFeeds?lati=' + $scope.lat + '&longi=' + $scope.lan,
             method: 'GET'
         }).then(function successCallback(response) {
             $scope.news = response.data;
