@@ -2,21 +2,6 @@ TharaLocal.controller("HomeController", ['$scope','$http','$location','$state','
     
     var base_url = "http://10.4.59.85:8080/TharaLocalAPI";
     
-    $scope.news = [
-        {
-            header: 'This thara local app',
-            content: 'Fsdjhfjs hsdfjhsb isdhfkjsdf jkbsdjbf',
-            createdBy : 'siva',
-            ts: 'Tue 16:58'
-        },
-        {
-            header: 'This thara local app1',
-            content: 'Fsdjhfjs hsdfjhsb isdhfkjsdf jkbsdjbf',
-            createdBy : 'siva',
-            ts: 'Tue 16:58'
-        }
-   ]
-    
     $scope.getinitialdata = function() {
         navigator.geolocation.getCurrentPosition(onSuccess, onError);
     }
@@ -24,13 +9,10 @@ TharaLocal.controller("HomeController", ['$scope','$http','$location','$state','
     var onSuccess = function(position){
         $scope.showCurrenLocationInMap(position.coords.latitude, position.coords.longitude);
         $scope.getNews();
-        alert("suc"+position.coords.latitude)
-;    }
+    }
     var onError = function(error){
         $scope.showCurrenLocationInMap("12.823920000000001", "80.04514");
         $scope.getNews();
-        alert("err");
-        
     }
     
     $scope.getNews = function() {
