@@ -1,5 +1,5 @@
 <div class="form-group" ng-init = "getinitialdata()">
-    <input type="text" class="form-control" placeholder="Enter location" />
+    <input type="text" class="form-control" ng-model="search.$" placeholder="Search" />
 </div>
 
 <div class="col-sm-12 col-xs-12" style="padding:0;height: 150px;margin-bottom: 4%" id="map"></div>
@@ -9,7 +9,7 @@
 <div ng-if="!news.length > 0" style="text-align:center"> No feeds for your location </div>
 
 <div ng-if="news.length > 0" class="form-group col-sm-12 col-xs-12" style="border-bottom: 1px solid rgb(222, 222, 222);
-                                                   padding: 0px 0px 2%;" ng-repeat="post in news" >
+                                                   padding: 0px 0px 2%;" ng-repeat="post in news | filter:search:strict" >
     <div class="col-xs-2 col-sm-2" style="padding: 0;">
         <img class="img-responsive" src="modules/images/news-icon1.png" style="width:80%"  />
     </div>

@@ -2,7 +2,7 @@
     <h3 style="margin-top: 0; margin-bottom: 1%;color: #0f75bc">{{post.title}}</h3>
     <span style="font-size: 9px; color: #222"><b>posted by {{post.postedBy}} at {{post.createon}} </b></span>
     <span class="glyphicon glyphicon-share" style="color: #0f75bc; float:right;margin-left:3%;cursor:pointer"></span>
-    <span class="glyphicon glyphicon-remove" style="color: red;float:right;cursor:pointer"></span>
+    <span class="glyphicon glyphicon-remove" ng-click="alert('Abuse reported')" style="color: red;float:right;cursor:pointer"></span>
     <div class="col-xs-12 col-sm-12" style="margin-top:5%">
         {{post.news}}
     </div>
