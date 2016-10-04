@@ -46,7 +46,7 @@ TharaLocal.controller("LoginController", ['$scope','$location','$http','$rootSco
             
         }).then(function successCallback(response) {
                 $scope.user = {};
-                $location.path('/login');    
+                $location.path('/home');    
         }, function errorCallback(response) {
             
         });
